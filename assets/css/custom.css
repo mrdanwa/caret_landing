@@ -441,6 +441,7 @@ footer {
   line-height: 1.8;
   margin-bottom: 10px;
   font-size: 16px;
+  color: #6a6a6a; /* Added this line to match paragraph color */
 }
 
 .privacy-content strong {
