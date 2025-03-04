@@ -472,18 +472,6 @@ footer {
   }
 }
 
-@media (max-width: 991.98px) {
-  .btn-area-privada-top {
-    display: none;
-  }
-}
-
-@media (min-width: 992px) {
-  .btn-area-privada-nav {
-    display: none;
-  }
-}
-
 .team-image {
   border-radius: 50%;
   margin-top: 30px;
@@ -785,23 +773,6 @@ hr.short {
 @media (max-width: 768px) {
   .coming-soon-content {
     padding: 2rem;
-  }
-
-  .countdown-container {
-    gap: 1rem;
-  }
-
-  .countdown-item {
-    min-width: 60px;
-  }
-
-  .countdown-item span {
-    font-size: 2rem;
-  }
-
-  .countdown-item:not(:last-child)::after {
-    right: -0.8rem;
-    font-size: 1.8rem;
   }
 }
 
