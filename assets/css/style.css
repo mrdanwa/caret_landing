@@ -1206,12 +1206,6 @@ a:focus {
   color: #ffffff !important;
 }
 
-/* Opcional: si deseas que los textos tengan una sombra para mejorar la legibilidad */
-.flexslider .slides h1.fs-4.fs-md-5.zopacity,
-.flexslider .slides p.color-primary {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
 /*///////////////////////////////////
 // Google-map
 ///////////////////////////////////*/
