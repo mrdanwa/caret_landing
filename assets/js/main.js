@@ -29,6 +29,24 @@ $(document).ready(function () {
   });
 });
 
+// Script para el botón de cambio de idioma
+document.addEventListener("DOMContentLoaded", function () {
+  const languageToggle = document.getElementById("language-toggle");
+  const languageOptions = document.getElementById("language-options");
+
+  // Mostrar/ocultar opciones de idioma
+  languageToggle.addEventListener("click", function () {
+    languageOptions.classList.toggle("show");
+  });
+
+  // Cerrar el menú al hacer clic fuera
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".language-switcher")) {
+      languageOptions.classList.remove("show");
+    }
+  });
+});
+
 // Script para cambiar la apariencia del header al hacer scroll
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-elixir");
