@@ -16,6 +16,19 @@ $(window).on("load", function () {
   });
 });
 
+// Navbar dropdown
+$(document).ready(function () {
+  // Make the navbar fixed position from the start
+  $(".navbar-elixir").addClass("fixed-navbar");
+
+  // Handle dropdown menu opening without pushing content
+  $(".navbar-toggler").on("click", function () {
+    if (!$(".navbar-elixir").hasClass("scrolled")) {
+      $(".navbar-elixir").addClass("open-dropdown");
+    }
+  });
+});
+
 // Script para cambiar la apariencia del header al hacer scroll
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar-elixir");

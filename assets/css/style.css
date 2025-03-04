@@ -8660,6 +8660,15 @@ pre[class*="language-"] {
   padding-bottom: 20px;
 }
 
+.navbar-elixir.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+}
+
 @media (min-width: 62em) {
   .znav-container .dropdown,
   .znav-container .megamenu {
