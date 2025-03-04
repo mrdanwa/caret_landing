@@ -114,11 +114,11 @@ footer {
 }
 
 .footer-links:hover .footer-links-title:after {
-  width: 70px;
+  width: 60px;
 }
 
 .footer-menu li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.65rem;
   transition: all 0.3s ease;
 }
 
