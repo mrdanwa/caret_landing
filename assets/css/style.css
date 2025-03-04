@@ -8574,11 +8574,68 @@ pre[class*="language-"] {
 }
 
 .navbar-elixir {
+  background: transparent;
+  margin-bottom: -83px;
+  color: #ffffff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Clase que se añadirá con JavaScript cuando se hace scroll */
+.navbar-elixir.scrolled {
   background: rgba(255, 255, 255, 0.85);
-  margin-bottom: -82px;
   color: #004225;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
+
+/* Ajustes para los enlaces del menú cuando el header es transparente */
+.navbar-elixir .znav-container a:not(.btn) {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+/* Ajuste de color del botón outline en el header transparente */
+.navbar-elixir .btn-outline-primary {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar-elixir .btn-outline-primary:hover {
+  color: #004225;
+  background-color: #ffffff;
+}
+
+/* Cambio de color para los enlaces cuando se hace scroll */
+.navbar-elixir.scrolled .znav-container a:not(.btn) {
+  color: #004225;
+}
+
+/* Ajuste del botón outline cuando se hace scroll */
+.navbar-elixir.scrolled .btn-outline-primary {
+  color: #004225;
+  border-color: #004225;
+}
+
+.navbar-elixir.scrolled .btn-outline-primary:hover {
+  color: #ffffff;
+  background-color: #004225;
+}
+
+/* Ajuste para el ícono del menú en móvil */
+.navbar-elixir .hamburger-inner,
+.navbar-elixir .hamburger-inner::after,
+.navbar-elixir .hamburger-inner::before {
+  background-color: #ffffff;
+}
+
+.navbar-elixir.scrolled .hamburger-inner,
+.navbar-elixir.scrolled .hamburger-inner::after,
+.navbar-elixir.scrolled .hamburger-inner::before {
+  background-color: #004225;
 }
 
 .navbar-elixir .navbar {
