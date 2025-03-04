@@ -492,38 +492,6 @@ footer {
   object-fit: cover;
 }
 
-/* CSS para posicionar el botón de idioma a la derecha */
-
-/* Crear un contenedor flex para la barra de navegación */
-.znav-container .navbar-nav {
-  display: flex;
-  width: 100%;
-}
-
-/* Empujar el ítem del idioma a la derecha */
-.znav-container .navbar-nav li:has(.language-icon) {
-  margin-left: auto;
-}
-
-/* Para navegadores que no soportan :has(), usar una clase específica */
-.language-nav-item {
-  margin-left: auto !important;
-}
-
-/* Ajustes adicionales para responsive */
-@media (max-width: 61.99em) {
-  /* En móvil, asegurar que el botón de idioma esté al final del menú desplegable */
-  .znav-container .navbar-nav li:has(.language-icon) {
-    order: 999;
-    margin-left: 0;
-  }
-
-  .language-nav-item {
-    order: 999;
-    margin-left: 0 !important;
-  }
-}
-
 /* Login Page Specific Styles */
 .login-section {
   padding: 7.5rem 0;
