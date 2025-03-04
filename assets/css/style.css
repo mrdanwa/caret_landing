@@ -8576,66 +8576,73 @@ pre[class*="language-"] {
 .navbar-elixir {
   background: transparent;
   margin-bottom: -83px;
-  color: #ffffff;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
+/* Estilo por defecto (sin scroll) */
+.navbar-elixir a:not(.btn),
+.navbar-elixir button,
+.navbar-elixir [class*="has-"]:after {
+  color: #ffffff !important;
+}
+
+.navbar-elixir .btn-outline-primary {
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
 /* Clase que se añadirá con JavaScript cuando se hace scroll */
 .navbar-elixir.scrolled {
   background: rgba(255, 255, 255, 0.85);
-  color: #004225;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   border-bottom: none;
 }
 
-/* Ajustes para los enlaces del menú cuando el header es transparente */
-.navbar-elixir .znav-container a:not(.btn) {
-  color: #ffffff;
-  transition: color 0.3s ease;
+/* Estilo cuando hay scroll */
+.navbar-elixir.scrolled a:not(.btn),
+.navbar-elixir.scrolled button,
+.navbar-elixir.scrolled [class*="has-"]:after {
+  color: #000000 !important;
 }
 
-/* Ajuste de color del botón outline en el header transparente */
-.navbar-elixir .btn-outline-primary {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-.navbar-elixir .btn-outline-primary:hover {
-  color: #004225;
-  background-color: #ffffff;
-}
-
-/* Cambio de color para los enlaces cuando se hace scroll */
-.navbar-elixir.scrolled .znav-container a:not(.btn) {
-  color: #004225;
-}
-
-/* Ajuste del botón outline cuando se hace scroll */
 .navbar-elixir.scrolled .btn-outline-primary {
-  color: #004225;
-  border-color: #004225;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* Para el botón de CARET ECOSYSTEM */
+.navbar-elixir .btn-outline-primary:hover {
+  color: white !important;
+  background-color: #004225;
 }
 
 .navbar-elixir.scrolled .btn-outline-primary:hover {
-  color: #ffffff;
+  color: white !important;
   background-color: #004225;
 }
 
-/* Ajuste para el ícono del menú en móvil */
-.navbar-elixir .hamburger-inner,
-.navbar-elixir .hamburger-inner::after,
-.navbar-elixir .hamburger-inner::before {
-  background-color: #ffffff;
+.znav-container .has-dropdown .dropdown a:not(.btn) {
+  color: #000000 !important;
 }
 
-.navbar-elixir.scrolled .hamburger-inner,
-.navbar-elixir.scrolled .hamburger-inner::after,
-.navbar-elixir.scrolled .hamburger-inner::before {
-  background-color: #004225;
+.znav-container .has-dropdown .dropdown a:not(.btn):hover,
+.znav-container .has-dropdown .dropdown a:not(.btn):active,
+.znav-container .has-dropdown .dropdown a:not(.btn):focus {
+  color: #004225 !important;
+}
+
+.navbar-elixir.scrolled .has-dropdown .dropdown a:not(.btn),
+.navbar-elixir .has-dropdown .dropdown a:not(.btn) {
+  color: #000000 !important;
+}
+
+.navbar-elixir.scrolled .has-dropdown .dropdown a:not(.btn):hover,
+.navbar-elixir .has-dropdown .dropdown a:not(.btn):hover {
+  color: #004225 !important;
 }
 
 .navbar-elixir .navbar {
