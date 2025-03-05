@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoIcon1.setAttribute("src", basePath + "assets/images/logo/logo5.png");
   }
   if (logoIcon2) {
-    logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo1.png");
+    logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo8.png");
   }
 
   function checkScroll() {
@@ -104,11 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (logoIcon1) {
         logoIcon1.setAttribute(
           "src",
-          basePath + "assets/images/logo/logo3.png"
+          basePath + "assets/images/logo/logo4.png"
         );
       }
       if (logoIcon2) {
-        logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo.png");
+        logoIcon2.setAttribute(
+          "src",
+          basePath + "assets/images/logo/logo7.png"
+        );
       }
     } else {
       navbar.classList.remove("scrolled");
@@ -122,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (logoIcon2) {
         logoIcon2.setAttribute(
           "src",
-          basePath + "assets/images/logo/logo1.png"
+          basePath + "assets/images/logo/logo8.png"
         );
       }
     }
@@ -168,9 +171,9 @@ $(document).ready(function () {
 
   // Define logo paths
   const whiteLogo1 = basePath + "assets/images/logo/logo5.png";
-  const whiteLogo2 = basePath + "assets/images/logo/logo1.png";
-  const coloredLogo1 = basePath + "assets/images/logo/logo3.png";
-  const coloredLogo2 = basePath + "assets/images/logo/logo.png";
+  const whiteLogo2 = basePath + "assets/images/logo/logo8.png";
+  const coloredLogo1 = basePath + "assets/images/logo/logo4.png";
+  const coloredLogo2 = basePath + "assets/images/logo/logo7.png";
 
   let isNavbarOpen = false;
 
