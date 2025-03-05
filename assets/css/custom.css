@@ -2,7 +2,7 @@
 footer {
   font-family: "Montserrat", sans-serif;
   background-color: #1f1f1f;
-  color: #ffffff;
+  color: #6e746e;
   width: 100%;
 }
 
@@ -12,9 +12,17 @@ footer {
   padding: 4rem 0 2rem;
 }
 
+footer hr {
+  width: 50px;
+  height: 2px;
+  background-color: white;
+  border: none;
+  margin: 0 auto 2rem;
+}
+
 /* Newsletter Container */
 .newsletter-container {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #064f2c;
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -74,8 +82,8 @@ footer {
   border-radius: 0 6px 6px 0;
   padding: 0.9rem 1.5rem;
   font-weight: 600;
-  color: #004225;
-  background-color: #cba855;
+  color: white;
+  background-color: #004225;
   border: none;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -83,7 +91,7 @@ footer {
 }
 
 .newsletter-form .btn-subscribe:hover {
-  background-color: #e0bb65;
+  background-color: #01311b;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -109,7 +117,7 @@ footer {
   bottom: 0;
   width: 50px;
   height: 2px;
-  background-color: #cba855;
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -153,7 +161,7 @@ footer {
   bottom: 0;
   width: 50px;
   height: 2px;
-  background-color: #cba855;
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -175,7 +183,7 @@ footer {
 
 .contact-item i {
   margin-right: 10px;
-  color: #cba855;
+  color: white;
   font-size: 1rem;
   transition: transform 0.3s ease;
 }
@@ -553,7 +561,7 @@ footer {
 }
 
 .login-form a:hover {
-  color: #cba855;
+  color: #004225;
 }
 
 .login-footer {
@@ -621,41 +629,6 @@ footer {
   }
 }
 
-/* Button styling override */
-.btn-primary,
-.btn-warning {
-  padding: 0.8rem 2rem;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.btn-primary {
-  background-color: #004225;
-  border-color: #004225;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #003018;
-  border-color: #003018;
-}
-
-.btn-warning {
-  background-color: #cba855;
-  border-color: #cba855;
-  color: #004225;
-}
-
-.btn-warning:hover,
-.btn-warning:focus {
-  background-color: #b89945;
-  border-color: #b89945;
-  color: #004225;
-}
-
 /* Animation effects */
 .login-card {
   animation: fadeInUp 0.5s ease-out;
@@ -718,14 +691,6 @@ h1.display-4 {
 .description p.lead {
   font-size: 1.333rem;
   color: #4a4a4a;
-}
-
-hr.short {
-  background-color: #cba855;
-  height: 3px;
-  width: 100px;
-  margin: 1.5rem auto;
-  border-radius: 1.5px;
 }
 
 /* Back button styles */

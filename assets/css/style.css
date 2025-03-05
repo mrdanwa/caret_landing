@@ -2022,8 +2022,8 @@ ul.bullet-none {
 .btn-warning:focus,
 .btn-warning:active:focus {
   color: white;
-  background-color: #f0c202;
-  border-color: #f0c202;
+  background-color: #c69d3e;
+  border-color: #c69d3e;
 }
 
 .btn-warning.disabled,
