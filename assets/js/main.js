@@ -135,3 +135,158 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", checkScroll);
   window.addEventListener("resize", checkScroll);
 });
+
+// Handle hamburger menu and scrolling behaviors with consistent logo states
+$(document).ready(function () {
+  const navbar = $(".navbar-elixir");
+  const navbarCollapse = $(".navbar-collapse");
+  const logoIcon1 = $("#logo-icon1");
+  const logoIcon2 = $("#logo-icon2");
+
+  // Get the base URL from a base tag if it exists, or construct a relative path
+  const getBasePath = function () {
+    // Check if base tag exists
+    const baseTag = document.querySelector("base");
+    if (baseTag && baseTag.href) {
+      return baseTag.href;
+    }
+
+    // If no base tag, try to determine from script location
+    const scripts = document.getElementsByTagName("script");
+    for (let i = 0; i < scripts.length; i++) {
+      const src = scripts[i].src;
+      if (src.includes("/assets/js/")) {
+        return src.split("/assets/js/")[0] + "/";
+      }
+    }
+
+    // Fallback to relative path
+    return "../";
+  };
+
+  const basePath = getBasePath();
+
+  // Define logo paths
+  const whiteLogo1 = basePath + "assets/images/logo/logo5.png";
+  const whiteLogo2 = basePath + "assets/images/logo/logo1.png";
+  const coloredLogo1 = basePath + "assets/images/logo/logo3.png";
+  const coloredLogo2 = basePath + "assets/images/logo/logo.png";
+
+  let isNavbarOpen = false;
+
+  // Set logos to colored version
+  function setColoredLogos() {
+    logoIcon1.attr("src", coloredLogo1);
+    logoIcon2.attr("src", coloredLogo2);
+  }
+
+  // Set logos to white version
+  function setWhiteLogos() {
+    logoIcon1.attr("src", whiteLogo1);
+    logoIcon2.attr("src", whiteLogo2);
+  }
+
+  // When hamburger is clicked
+  $(".navbar-toggler").on("click", function () {
+    isNavbarOpen = !navbarCollapse.hasClass("show");
+
+    if (isNavbarOpen) {
+      // Menu is being opened - always add scrolled class and use colored logos
+      navbar.addClass("scrolled");
+      setColoredLogos();
+    } else {
+      // Menu is being closed
+      // Only remove scrolled class if we're at the top of the page
+      if (window.scrollY <= 100) {
+        navbar.removeClass("scrolled");
+        setWhiteLogos();
+      }
+    }
+  });
+
+  // Handle scrolling - this will be ignored when dropdown is open
+  let originalScrollHandler = function () {
+    // Skip this logic if the navbar is open
+    if (isNavbarOpen) {
+      return;
+    }
+
+    const headerHeight = navbar.outerHeight();
+    let heroSection;
+
+    if ($(".flexslider").length) {
+      heroSection = $(".flexslider");
+    } else if ($(".background-holder.overlay").length) {
+      heroSection = $("section:first-of-type");
+    }
+
+    const threshold = heroSection
+      ? heroSection.outerHeight() - headerHeight
+      : 100;
+
+    if (window.scrollY > threshold) {
+      navbar.addClass("scrolled");
+      setColoredLogos();
+    } else {
+      navbar.removeClass("scrolled");
+      setWhiteLogos();
+    }
+  };
+
+  // Create a debounced version of the scroll handler to improve performance
+  function debounce(func, wait) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        func.apply(context, args);
+      }, wait);
+    };
+  }
+
+  const debouncedScrollHandler = debounce(function () {
+    if (!isNavbarOpen) {
+      originalScrollHandler();
+    }
+  }, 10);
+
+  // Apply the scroll handler
+  $(window).on("scroll", function () {
+    // Always maintain scrolled state when navbar is open
+    if (isNavbarOpen) {
+      navbar.addClass("scrolled");
+      setColoredLogos();
+    } else {
+      debouncedScrollHandler();
+    }
+  });
+
+  // Handle resize events
+  $(window).on("resize", function () {
+    if (window.innerWidth > 991) {
+      // Bootstrap's lg breakpoint
+      // If we resize to desktop view and the dropdown was open, reset state
+      if (isNavbarOpen) {
+        isNavbarOpen = false;
+
+        // Apply normal scroll logic
+        if (window.scrollY <= 100) {
+          navbar.removeClass("scrolled");
+          setWhiteLogos();
+        }
+      }
+    }
+  });
+
+  // Run on page load
+  if (navbarCollapse.hasClass("show")) {
+    isNavbarOpen = true;
+    navbar.addClass("scrolled");
+    setColoredLogos();
+  } else {
+    // Initial scroll check
+    originalScrollHandler();
+  }
+});
