@@ -8627,7 +8627,8 @@ pre[class*="language-"] {
 /* Para el botón de CARET ECOSYSTEM */
 .navbar-elixir .btn-outline-primary:hover {
   color: white !important;
-  background-color: #004225;
+  background-color: #004225 !important;
+  border-color: #004225 !important;
 }
 
 .navbar-elixir.scrolled .btn-outline-primary:hover {
