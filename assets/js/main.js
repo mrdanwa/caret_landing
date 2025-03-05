@@ -53,12 +53,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoIcon1 = document.getElementById("logo-icon1");
   const logoIcon2 = document.getElementById("logo-icon2");
 
+  // Get the base URL from a base tag if it exists, or construct a relative path
+  const getBasePath = function () {
+    // Check if base tag exists
+    const baseTag = document.querySelector("base");
+    if (baseTag && baseTag.href) {
+      return baseTag.href;
+    }
+
+    // If no base tag, try to determine from script location
+    const scripts = document.getElementsByTagName("script");
+    for (let i = 0; i < scripts.length; i++) {
+      const src = scripts[i].src;
+      if (src.includes("/assets/js/")) {
+        return src.split("/assets/js/")[0] + "/";
+      }
+    }
+
+    // Fallback to relative path
+    return "../";
+  };
+
+  const basePath = getBasePath();
+
   // Set initial logo state (white when at top)
   if (logoIcon1) {
-    logoIcon1.setAttribute("src", "assets/images/logo/logo5.png");
+    logoIcon1.setAttribute("src", basePath + "assets/images/logo/logo5.png");
   }
   if (logoIcon2) {
-    logoIcon2.setAttribute("src", "assets/images/logo/logo1.png");
+    logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo1.png");
   }
 
   function checkScroll() {
@@ -79,19 +102,28 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.classList.add("scrolled");
       // Change logo to colored version when scrolled
       if (logoIcon1) {
-        logoIcon1.setAttribute("src", "assets/images/logo/logo3.png");
+        logoIcon1.setAttribute(
+          "src",
+          basePath + "assets/images/logo/logo3.png"
+        );
       }
       if (logoIcon2) {
-        logoIcon2.setAttribute("src", "assets/images/logo/logo.png");
+        logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo.png");
       }
     } else {
       navbar.classList.remove("scrolled");
       // Change logo to white version when at top
       if (logoIcon1) {
-        logoIcon1.setAttribute("src", "assets/images/logo/logo5.png");
+        logoIcon1.setAttribute(
+          "src",
+          basePath + "assets/images/logo/logo5.png"
+        );
       }
       if (logoIcon2) {
-        logoIcon2.setAttribute("src", "assets/images/logo/logo1.png");
+        logoIcon2.setAttribute(
+          "src",
+          basePath + "assets/images/logo/logo1.png"
+        );
       }
     }
   }
