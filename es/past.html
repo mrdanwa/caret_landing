@@ -540,7 +540,7 @@
 
           return `
             <div class="col-md-6 col-lg-4 py-0 mt-4 mt-md-0">
-              <div class="background-white pb-4 h-100 radius-secondary">
+              <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">
                 <img
                   class="w-100 radius-tr-secondary radius-tl-secondary"
                   src="${
@@ -552,7 +552,7 @@
                   onerror="this.src='../assets/images/images/caret.png';"
                   style="height: 225px; object-fit: cover;"
                 />
-                <div class="px-4 pt-4">
+                <div class="px-4 pt-4" style="flex-grow: 1; display: flex; flex-direction: column;">
                   <div class="overflow-hidden">
                     <a href="pastproject.html?id=${project.id}">
                       <h5>${project.name}</h5>
@@ -566,12 +566,12 @@
                       Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m², con una inversión de ${formattedInvested} € y un retorno de ${formattedReturn} €, generando un margen de ${formattedMargin} € y un ${formattedIRR}% de TIR.
                     </p>
                   </div>
-                  <div class="overflow-hidden">
+                  <div class="overflow-hidden" style="margin-top: auto;">
                     <div class="d-inline-block">
                       <a class="d-flex align-items-center" href="pastproject.html?id=${
                         project.id
                       }"
-                        >Leer Más
+                        >Más Información
                         <div class="overflow-hidden ml-2">
                           <span class="d-inline-block">&xrarr;</span>
                         </div></a
