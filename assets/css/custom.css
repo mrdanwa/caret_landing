@@ -907,7 +907,7 @@ h1.display-4 {
 .project-details {
   background-color: white;
   border-radius: 12px;
-  padding: 3rem;
+  padding: 1rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -924,7 +924,7 @@ h1.display-4 {
 .project-title {
   color: #004225;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin: 0;
 }
 
@@ -952,12 +952,12 @@ h1.display-4 {
 .project-details-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .project-detail-item {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .project-detail-label {
@@ -989,7 +989,7 @@ h1.display-4 {
   background-color: #f8f9fa;
   border-left: 5px solid #004225;
   padding: 1.5rem;
-  margin: 2.5rem 0;
+  margin: 1.5rem 0;
   border-radius: 0 8px 8px 0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
@@ -1020,7 +1020,7 @@ h1.display-4 {
   font-weight: 600;
   color: #004225;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 /* Botón de contacto */
@@ -1032,7 +1032,7 @@ h1.display-4 {
 .contact-btn {
   background-color: #004225;
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.2rem;
   font-weight: 400;
   border-radius: 30px;
   font-size: 0.8rem;
@@ -1065,7 +1065,7 @@ h1.display-4 {
   }
 
   .project-details {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 
   .project-carousel .carousel-item img {
