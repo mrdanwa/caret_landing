@@ -206,9 +206,6 @@
                         <a class="color-white" href="../index.html">Inicio</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        Proyectos
-                      </li>
-                      <li class="breadcrumb-item active" aria-current="page">
                         Proyectos Pasados
                       </li>
                     </ol>
@@ -557,7 +554,7 @@
                 />
                 <div class="px-4 pt-4">
                   <div class="overflow-hidden">
-                    <a href="#">
+                    <a href="pastproject.html?id=${project.id}">
                       <h5>${project.name}</h5>
                     </a>
                   </div>
@@ -571,7 +568,9 @@
                   </div>
                   <div class="overflow-hidden">
                     <div class="d-inline-block">
-                      <a class="d-flex align-items-center" href="#"
+                      <a class="d-flex align-items-center" href="pastproject.html?id=${
+                        project.id
+                      }"
                         >Leer Más
                         <div class="overflow-hidden ml-2">
                           <span class="d-inline-block">&xrarr;</span>

@@ -171,6 +171,8 @@
           </nav>
         </div>
       </div>
+
+      <!-- Hero Section -->
       <section>
         <div>
           <div
@@ -192,8 +194,9 @@
                   <h1
                     class="color-white fs-4 fs-md-5 mb-0 zopacity"
                     data-zanim='{"delay":0}'
+                    id="project-title"
                   >
-                    Proyectos en Curso
+                    Cargando proyecto...
                   </h1>
                   <div
                     class="nav zopacity"
@@ -205,8 +208,17 @@
                       <li class="breadcrumb-item">
                         <a class="color-white" href="../index.html">Inicio</a>
                       </li>
-                      <li class="breadcrumb-item active" aria-current="page">
-                        Proyectos en Curso
+                      <li class="breadcrumb-item">
+                        <a class="color-white" href="current.html"
+                          >Proyectos en Curso</a
+                        >
+                      </li>
+                      <li
+                        class="breadcrumb-item active"
+                        aria-current="page"
+                        id="breadcrumb-project-name"
+                      >
+                        Cargando...
                       </li>
                     </ol>
                   </div>
@@ -219,22 +231,154 @@
         <!--/.container-->
       </section>
 
-      <section class="background-11">
+      <!-- Project Details Section -->
+      <section class="project-section background-11">
         <div class="container">
-          <!-- INICIO DE CONTENEDOR DE PROYECTOS -->
-          <div id="loading-indicator" class="text-center py-5">
+          <!-- Indicador de carga -->
+          <div id="loading-indicator" class="text-center">
             <div class="spinner-border text-primary" role="status">
-              <span class="sr-only">Cargando proyectos...</span>
+              <span class="sr-only">Cargando proyecto...</span>
             </div>
-            <p class="mt-2">Cargando proyectos...</p>
+            <p class="mt-3">Cargando detalles del proyecto...</p>
           </div>
 
-          <div id="projects-container">
-            <!-- Los proyectos se cargarán aquí dinámicamente -->
+          <!-- Contenido del proyecto -->
+          <div
+            id="project-content"
+            class="project-container"
+            style="display: none"
+          >
+            <!-- Carousel -->
+            <div
+              id="project-carousel"
+              class="carousel slide project-carousel"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner" id="carousel-items">
+                <!-- Las imágenes se cargarán aquí -->
+              </div>
+
+              <!-- Indicadores del carousel -->
+              <ol class="carousel-indicators" id="carousel-indicators">
+                <!-- Los indicadores se generarán dinámicamente -->
+              </ol>
+
+              <!-- Controles del carousel -->
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Anterior</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Siguiente</span>
+              </button>
+            </div>
+
+            <!-- Detalles del proyecto -->
+            <div class="project-details">
+              <!-- Cabecera con título y estado -->
+              <div class="project-header">
+                <h2 class="project-title" id="detail-project-name">
+                  Detalles del Proyecto
+                </h2>
+                <span class="status-badge" id="project-status">Estado</span>
+              </div>
+
+              <!-- Grid de detalles básicos -->
+              <div class="project-details-grid">
+                <!-- Ubicación -->
+                <div class="project-detail-item">
+                  <div class="project-detail-label">
+                    <i class="fa fa-map-marker"></i>Ubicación
+                  </div>
+                  <div class="project-detail-value" id="project-location">
+                    -
+                  </div>
+                </div>
+
+                <!-- Tipo -->
+                <div class="project-detail-item">
+                  <div class="project-detail-label">
+                    <i class="fa fa-building"></i>Tipo
+                  </div>
+                  <div class="project-detail-value" id="project-type">-</div>
+                </div>
+
+                <!-- Área -->
+                <div class="project-detail-item">
+                  <div class="project-detail-label">
+                    <i class="fa fa-expand"></i>Área
+                  </div>
+                  <div class="project-detail-value" id="project-area">-</div>
+                </div>
+              </div>
+
+              <!-- Información Financiera - Destacado -->
+              <div class="financial-highlight">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="project-detail-label">Inversión Total</div>
+                    <div class="project-detail-value" id="project-invested">
+                      -
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="project-detail-label">Retorno Final</div>
+                    <div class="project-detail-value" id="project-return">
+                      -
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Métricas Financieras -->
+              <div class="metrics-block">
+                <h4 class="metrics-title">Métricas Financieras</h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="project-detail-item">
+                      <div class="project-detail-label">
+                        <i class="fa fa-line-chart"></i>Margen
+                      </div>
+                      <div class="project-detail-value" id="project-margin">
+                        -
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="project-detail-item">
+                      <div class="project-detail-label">
+                        <i class="fa fa-percent"></i>TIR
+                      </div>
+                      <div class="project-detail-value" id="project-irr">-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botón de contacto -->
+              <div class="contact-btn-container">
+                <a href="contact.html" class="btn contact-btn">
+                  <i class="fa fa-envelope mr-2"></i>Solicitar Más Información
+                </a>
+              </div>
+            </div>
           </div>
-          <!-- FIN DE CONTENEDOR DE PROYECTOS -->
         </div>
-        <!--/.container-->
       </section>
 
       <!-- Footer -->
@@ -425,168 +569,214 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <!-- Script para cargar dinámicamente los proyectos -->
+
+    <!-- Script para cargar datos del proyecto -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Array para almacenar todos los proyectos
-        let allProjects = [];
+        // Obtener ID del proyecto de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get("id");
 
-        // Función para obtener todos los proyectos (recursiva para manejar paginación)
-        async function fetchAllProjects(
-          url = "https://caret-z446v.ondigitalocean.app/api/projects/"
-        ) {
-          try {
-            const response = await fetch(url);
-            if (!response.ok) {
-              throw new Error("Error al obtener los proyectos");
-            }
-
-            const data = await response.json();
-
-            // Añadir los resultados actuales al array de todos los proyectos
-            allProjects = allProjects.concat(data.results);
-
-            // Si hay una página siguiente, seguir obteniendo proyectos
-            if (data.next) {
-              await fetchAllProjects(data.next);
-            } else {
-              // Una vez que se han cargado todos los proyectos, filtrar y mostrar los actuales
-              displayCurrentProjects();
-            }
-          } catch (error) {
-            console.error("Error:", error);
-            document.getElementById("loading-indicator").innerHTML = `
-              <div class="alert alert-danger" role="alert">
-                Error al cargar los proyectos. Por favor, intente nuevamente más tarde.
-              </div>
-            `;
-          }
+        if (!projectId) {
+          // Si no hay ID de proyecto, mostrar mensaje de error
+          document.getElementById("loading-indicator").innerHTML = `
+            <div class="alert alert-danger" role="alert">
+              No se ha especificado un proyecto. Por favor, vuelva a la <a href="past.html">lista de proyectos</a>.
+            </div>
+          `;
+          return;
         }
 
-        // Función para mostrar los proyectos en curso
-        function displayCurrentProjects() {
-          // Filtrar solo los proyectos en curso
-          const currentProjects = allProjects.filter(
-            (project) => project.status === "current"
-          );
+        // URL de la API
+        const apiUrl = `https://caret-z446v.ondigitalocean.app/api/projects/${projectId}/`;
 
-          // Si no hay proyectos en curso, mostrar mensaje
-          if (currentProjects.length === 0) {
-            document.getElementById("loading-indicator").innerHTML = `
-              <div class="alert alert-info" role="alert">
-                No se encontraron proyectos en curso.
+        // Cargar datos del proyecto
+        fetch(apiUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Error al cargar el proyecto");
+            }
+            return response.json();
+          })
+          .then((project) => {
+            // Verificar que el proyecto sea de tipo "past"
+            if (project.status !== "past") {
+              document.getElementById("loading-indicator").innerHTML = `
+                <div class="alert alert-warning" role="alert">
+                  Este proyecto no está en la categoría de Proyectos Pasados. Puede verlo en <a href="currentproject.html?id=${project.id}">Proyectos en Curso</a>.
+                </div>
+              `;
+              return;
+            }
+
+            // Actualizar título y breadcrumb
+            document.getElementById("project-title").textContent = project.name;
+            document.getElementById("breadcrumb-project-name").textContent =
+              project.name;
+            document.title = `Caret Capital | ${project.name}`;
+
+            // Actualizar detalles del proyecto
+            document.getElementById("detail-project-name").textContent =
+              project.name;
+            document.getElementById("project-location").textContent =
+              project.location;
+            document.getElementById("project-type").textContent = project.type;
+            document.getElementById("project-area").textContent = `${parseFloat(
+              project.area
+            ).toLocaleString("es-ES", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })} m²`;
+
+            // Formatear valores numéricos
+            document.getElementById(
+              "project-invested"
+            ).textContent = `${parseFloat(project.invested).toLocaleString(
+              "es-ES",
+              { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+            )} €`;
+            document.getElementById(
+              "project-return"
+            ).textContent = `${parseFloat(project.return_amount).toLocaleString(
+              "es-ES",
+              { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+            )} €`;
+            document.getElementById(
+              "project-margin"
+            ).textContent = `${parseFloat(project.margin).toLocaleString(
+              "es-ES",
+              { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+            )} €`;
+            document.getElementById("project-irr").textContent = `${parseFloat(
+              project.irr
+            ).toLocaleString("es-ES", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}%`;
+
+            // Establecer clase de estado
+            const statusElement = document.getElementById("project-status");
+            statusElement.classList.add("status-past");
+            statusElement.textContent = "Finalizado";
+
+            // Cargar imágenes en el carrusel
+            const carouselInner = document.getElementById("carousel-items");
+            const carouselIndicators = document.getElementById(
+              "carousel-indicators"
+            );
+            let carouselItems = "";
+            let indicators = "";
+
+            // Añadir la imagen principal
+            const mainImage = project.image
+              ? project.image
+              : "../assets/images/images/caret.png";
+            carouselItems += `
+              <div class="carousel-item active">
+                <img src="${mainImage}" class="d-block w-100" alt="${project.name}">
               </div>
             `;
-            return;
-          }
 
-          // Ocultar el indicador de carga
-          document.getElementById("loading-indicator").style.display = "none";
+            // Añadir el primer indicador (activo)
+            indicators += `<li data-target="#project-carousel" data-slide-to="0" class="active"></li>`;
 
-          // Contenedor de proyectos
-          const projectsContainer =
-            document.getElementById("projects-container");
+            // Añadir imágenes adicionales
+            if (
+              project.additional_images &&
+              project.additional_images.length > 0
+            ) {
+              project.additional_images.forEach((imgObj, index) => {
+                carouselItems += `
+                  <div class="carousel-item">
+                    <img src="${imgObj.image}" class="d-block w-100" alt="${project.name} - Imagen adicional">
+                  </div>
+                `;
 
-          // Generar filas de proyectos (3 proyectos por fila)
-          for (let i = 0; i < currentProjects.length; i += 3) {
-            const row = document.createElement("div");
-            row.className = "row mt-4";
+                // Añadir indicadores para imágenes adicionales
+                indicators += `<li data-target="#project-carousel" data-slide-to="${
+                  index + 1
+                }"></li>`;
+              });
+            }
 
-            // Agregar hasta 3 proyectos en esta fila
-            for (let j = 0; j < 3; j++) {
-              if (i + j < currentProjects.length) {
-                const project = currentProjects[i + j];
+            carouselInner.innerHTML = carouselItems;
+            carouselIndicators.innerHTML = indicators;
 
-                // Crear HTML para el proyecto
-                const projectHTML = createProjectHTML(project);
-                row.innerHTML += projectHTML;
+            // Mostrar el contenido y ocultar el indicador de carga
+            document.getElementById("loading-indicator").style.display = "none";
+            document.getElementById("project-content").style.display = "block";
+
+            // Asegurar que las imágenes están cargadas antes de inicializar el carrusel
+            const carouselImages = document.querySelectorAll(
+              "#carousel-items img"
+            );
+            let imagesLoaded = 0;
+
+            function checkAllImagesLoaded() {
+              imagesLoaded++;
+              if (imagesLoaded === carouselImages.length) {
+                // Todas las imágenes están cargadas, ahora inicializamos el carrusel
+                $("#project-carousel").carousel();
+
+                // Asegurar que los botones de navegación funcionen
+                const carouselElement =
+                  document.getElementById("project-carousel");
+
+                // Modificar los enlaces del carousel para evitar el desplazamiento
+                const prevButton = document.querySelector(
+                  ".carousel-control-prev"
+                );
+                const nextButton = document.querySelector(
+                  ".carousel-control-next"
+                );
+
+                // Quitar los atributos href que causan el desplazamiento
+                prevButton.removeAttribute("href");
+                nextButton.removeAttribute("href");
+
+                // Agregar listeners para los botones manualmente
+                prevButton.addEventListener("click", function (e) {
+                  e.preventDefault();
+                  e.stopPropagation(); // Detener la propagación del evento
+                  $("#project-carousel").carousel("prev");
+                });
+
+                nextButton.addEventListener("click", function (e) {
+                  e.preventDefault();
+                  e.stopPropagation(); // Detener la propagación del evento
+                  $("#project-carousel").carousel("next");
+                });
+
+                // Reinicializar animaciones si es necesario
+                if (typeof window.reInitializeComponents === "function") {
+                  window.reInitializeComponents();
+                }
               }
             }
 
-            projectsContainer.appendChild(row);
-          }
-
-          // Reinicializar animaciones y otros componentes del tema
-          if (typeof window.reInitializeComponents === "function") {
-            window.reInitializeComponents();
-          }
-        }
-
-        // Función para crear HTML de un proyecto
-        function createProjectHTML(project) {
-          // Formatear los valores numéricos con puntos y comas apropiados para español
-          const formattedArea = parseFloat(project.area).toLocaleString(
-            "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-          );
-          const formattedInvested = parseFloat(project.invested).toLocaleString(
-            "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-          );
-          const formattedReturn = parseFloat(
-            project.return_amount
-          ).toLocaleString("es-ES", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
+            // Si no hay imágenes, inicializar de todos modos
+            if (carouselImages.length === 0) {
+              $("#project-carousel").carousel();
+            } else {
+              // Esperar a que cada imagen se cargue
+              carouselImages.forEach((img) => {
+                if (img.complete) {
+                  checkAllImagesLoaded();
+                } else {
+                  img.addEventListener("load", checkAllImagesLoaded);
+                  img.addEventListener("error", checkAllImagesLoaded); // Manejar errores de carga
+                }
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("loading-indicator").innerHTML = `
+              <div class="alert alert-danger" role="alert">
+                Error al cargar los detalles del proyecto. Por favor, intente nuevamente más tarde o vuelva a la <a href="past.html">lista de proyectos</a>.
+              </div>
+            `;
           });
-          const formattedMargin = parseFloat(project.margin).toLocaleString(
-            "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-          );
-          const formattedIRR = parseFloat(project.irr).toLocaleString("es-ES", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          });
-          const formattedPending = parseFloat(project.pending).toLocaleString(
-            "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-          );
-
-          return `
-    <div class="col-md-6 col-lg-4 py-0 mt-4 mt-md-0">
-      <div class="background-white pb-4 h-100 radius-secondary">
-        <img
-          class="w-100 radius-tr-secondary radius-tl-secondary"
-          src="${
-            project.image ? project.image : "../assets/images/images/caret.png"
-          }"
-          alt="${project.name}"
-          onerror="this.src='../assets/images/images/caret.png';"
-          style="height: 225px; object-fit: cover;"
-        />
-        <div class="px-4 pt-4">
-          <div class="overflow-hidden">
-            <a href="currentproject.html?id=${project.id}">
-              <h5>${project.name}</h5>
-            </a>
-          </div>
-          <div class="overflow-hidden">
-            <p class="color-7">${project.location}</p>
-          </div>
-          <div class="overflow-hidden">
-            <p class="mt-3">
-              Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m², con una inversión de ${formattedInvested} € y un retorno esperado de ${formattedReturn} €, generando un margen de ${formattedMargin} € y un ${formattedIRR}% de TIR.
-            </p>
-          </div>
-          <div class="overflow-hidden">
-            <div class="d-inline-block">
-              <a class="d-flex align-items-center" href="currentproject.html?id=${
-                project.id
-              }"
-                >Leer Más
-                <div class="overflow-hidden ml-2">
-                  <span class="d-inline-block">&xrarr;</span>
-                </div></a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-        }
-        // Iniciar la carga de proyectos
-        fetchAllProjects();
       });
     </script>
   </body>
