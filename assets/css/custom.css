@@ -907,7 +907,7 @@ h1.display-4 {
 .project-details {
   background-color: white;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 3rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   position: relative;
 }
