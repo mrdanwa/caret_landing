@@ -325,14 +325,6 @@
                   </div>
                   <div class="project-detail-value" id="project-area">-</div>
                 </div>
-
-                <!-- Pendiente de inversión -->
-                <div class="project-detail-item">
-                  <div class="project-detail-label">
-                    <i class="fa fa-money"></i>Pendiente de Inversión
-                  </div>
-                  <div class="project-detail-value" id="project-pending">-</div>
-                </div>
               </div>
 
               <!-- Información Financiera - Destacado -->
@@ -596,7 +588,7 @@
         }
 
         // URL de la API
-        const apiUrl = `https://caret-z446v.ondigitalocean.app/api/projects/${projectId}/`;
+        const apiUrl = `https://caret-u6dxo.ondigitalocean.app/api/projects/${projectId}/`;
 
         // Cargar datos del proyecto
         fetch(apiUrl)
@@ -629,13 +621,13 @@
             // Formatear valores numéricos
             document.getElementById(
               "project-invested"
-            ).textContent = `${parseFloat(project.invested).toLocaleString(
+            ).textContent = `${parseFloat(project.buy_price).toLocaleString(
               "es-ES",
               { minimumFractionDigits: 2, maximumFractionDigits: 2 }
             )} €`;
             document.getElementById(
               "project-return"
-            ).textContent = `${parseFloat(project.return_amount).toLocaleString(
+            ).textContent = `${parseFloat(project.sell_price).toLocaleString(
               "es-ES",
               { minimumFractionDigits: 2, maximumFractionDigits: 2 }
             )} €`;
@@ -651,12 +643,6 @@
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}%`;
-            document.getElementById(
-              "project-pending"
-            ).textContent = `${parseFloat(project.pending).toLocaleString(
-              "es-ES",
-              { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-            )} €`;
 
             // Establecer clase de estado
             const statusElement = document.getElementById("project-status");

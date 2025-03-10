@@ -588,7 +588,7 @@
         }
 
         // URL de la API
-        const apiUrl = `https://caret-z446v.ondigitalocean.app/api/projects/${projectId}/`;
+        const apiUrl = `https://caret-u6dxo.ondigitalocean.app/api/projects/${projectId}/`;
 
         // Cargar datos del proyecto
         fetch(apiUrl)
@@ -631,13 +631,13 @@
             // Formatear valores numéricos
             document.getElementById(
               "project-invested"
-            ).textContent = `${parseFloat(project.invested).toLocaleString(
+            ).textContent = `${parseFloat(project.buy_price).toLocaleString(
               "es-ES",
               { minimumFractionDigits: 2, maximumFractionDigits: 2 }
             )} €`;
             document.getElementById(
               "project-return"
-            ).textContent = `${parseFloat(project.return_amount).toLocaleString(
+            ).textContent = `${parseFloat(project.sell_price).toLocaleString(
               "es-ES",
               { minimumFractionDigits: 2, maximumFractionDigits: 2 }
             )} €`;

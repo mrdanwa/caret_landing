@@ -433,7 +433,7 @@
 
         // Función para obtener todos los proyectos (recursiva para manejar paginación)
         async function fetchAllProjects(
-          url = "https://caret-z446v.ondigitalocean.app/api/projects/"
+          url = "https://caret-u6dxo.ondigitalocean.app/api/projects/"
         ) {
           try {
             const response = await fetch(url);
@@ -519,12 +519,12 @@
             "es-ES",
             { minimumFractionDigits: 2, maximumFractionDigits: 2 }
           );
-          const formattedInvested = parseFloat(project.invested).toLocaleString(
+          const formattedInvested = parseFloat(project.buy_price).toLocaleString(
             "es-ES",
             { minimumFractionDigits: 2, maximumFractionDigits: 2 }
           );
           const formattedReturn = parseFloat(
-            project.return_amount
+            project.sell_price
           ).toLocaleString("es-ES", {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
@@ -537,10 +537,6 @@
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
           });
-          const formattedPending = parseFloat(project.pending).toLocaleString(
-            "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-          );
 
           return `
     <div class="col-md-6 col-lg-4 py-0 mt-4 mt-md-0">
