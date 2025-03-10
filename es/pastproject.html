@@ -332,13 +332,13 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="project-detail-label">Inversión Total</div>
-                    <div class="project-detail-value" id="project-invested">
+                    <div class="project-detail-value" id="project-buy-price">
                       -
                     </div>
                   </div>
                   <div class="col-md-6 mt-4 mt-md-0">
                     <div class="project-detail-label">Retorno Final</div>
-                    <div class="project-detail-value" id="project-return">
+                    <div class="project-detail-value" id="project-sell-price">
                       -
                     </div>
                   </div>
@@ -630,13 +630,13 @@
 
             // Formatear valores numéricos
             document.getElementById(
-              "project-invested"
+              "project-buy-price"
             ).textContent = `${parseFloat(project.buy_price).toLocaleString(
               "es-ES",
               { minimumFractionDigits: 2, maximumFractionDigits: 2 }
             )} €`;
             document.getElementById(
-              "project-return"
+              "project-sell-price"
             ).textContent = `${parseFloat(project.sell_price).toLocaleString(
               "es-ES",
               { minimumFractionDigits: 2, maximumFractionDigits: 2 }

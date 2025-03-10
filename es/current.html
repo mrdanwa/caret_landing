@@ -519,11 +519,11 @@
             "es-ES",
             { minimumFractionDigits: 2, maximumFractionDigits: 2 }
           );
-          const formattedInvested = parseFloat(project.buy_price).toLocaleString(
+          const formattedBuyPrice = parseFloat(project.buy_price).toLocaleString(
             "es-ES",
             { minimumFractionDigits: 2, maximumFractionDigits: 2 }
           );
-          const formattedReturn = parseFloat(
+          const formattedSellPrice = parseFloat(
             project.sell_price
           ).toLocaleString("es-ES", {
             minimumFractionDigits: 2,
@@ -561,7 +561,7 @@
           </div>
           <div class="overflow-hidden">
             <p class="mt-3">
-              Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m², con una inversión de ${formattedInvested} € y un retorno esperado de ${formattedReturn} €, generando un margen de ${formattedMargin} € y un ${formattedIRR}% de TIR.
+              Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m², con una inversión de ${formattedBuyPrice} € y un retorno esperado de ${formattedSellPrice} €, generando un margen de ${formattedMargin} € y un ${formattedIRR}% de TIR.
             </p>
           </div>
           <div class="overflow-hidden" style="margin-top: auto;">
