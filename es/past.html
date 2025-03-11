@@ -517,26 +517,34 @@
           // Formatear los valores numéricos con puntos y comas apropiados para español
           const formattedArea = parseFloat(project.area).toLocaleString(
             "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+            { maximumFractionDigits: 0 }
           );
-          const formattedBuyPrice = parseFloat(project.buy_price).toLocaleString(
-            "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-          );
+          const formattedBuyPrice = parseFloat(
+            project.buy_price
+          ).toLocaleString("es-ES", {
+            maximumFractionDigits: 0,
+          });
           const formattedSellPrice = parseFloat(
             project.sell_price
           ).toLocaleString("es-ES", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
+            maximumFractionDigits: 0,
           });
           const formattedMargin = parseFloat(project.margin).toLocaleString(
             "es-ES",
-            { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+            { maximumFractionDigits: 0 }
           );
           const formattedIRR = parseFloat(project.irr).toLocaleString("es-ES", {
-            minimumFractionDigits: 2,
+            minimumFractionDigits: 0,
             maximumFractionDigits: 2,
           });
+          const formattedExpenses = parseFloat(project.expenses).toLocaleString(
+            "es-ES",
+            {
+              maximumFractionDigits: 0,
+            }
+          );
+          const buyDate = `${project.buy_month}/${project.buy_year}`;
+          const sellDate = `${project.sell_month}/${project.sell_year}`;
 
           return `
             <div class="col-md-6 col-lg-4 py-0 mt-4 mt-md-0">
@@ -563,7 +571,7 @@
                   </div>
                   <div class="overflow-hidden">
                     <p class="mt-3">
-                      Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m², con una inversión de ${formattedBuyPrice} € y un retorno de ${formattedSellPrice} €, generando un margen de ${formattedMargin} € y un ${formattedIRR}% de TIR.
+                      Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. El precio de compra es de ${formattedBuyPrice} €, con gastos asociados de ${formattedExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.
                     </p>
                   </div>
                   <div class="overflow-hidden" style="margin-top: auto;">

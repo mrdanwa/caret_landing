@@ -298,73 +298,85 @@
                 <span class="status-badge" id="project-status">Estado</span>
               </div>
 
-              <!-- Grid de detalles básicos -->
-              <div class="project-details-grid">
-                <!-- Ubicación -->
-                <div class="project-detail-item">
-                  <div class="project-detail-label">
-                    <i class="fa fa-map-marker"></i>Ubicación
-                  </div>
-                  <div class="project-detail-value" id="project-location">
-                    -
-                  </div>
-                </div>
-
-                <!-- Tipo -->
-                <div class="project-detail-item">
-                  <div class="project-detail-label">
-                    <i class="fa fa-building"></i>Tipo
-                  </div>
-                  <div class="project-detail-value" id="project-type">-</div>
-                </div>
-
-                <!-- Área -->
-                <div class="project-detail-item">
-                  <div class="project-detail-label">
-                    <i class="fa fa-expand"></i>Área
-                  </div>
-                  <div class="project-detail-value" id="project-area">-</div>
-                </div>
+              <!-- Descripción del proyecto -->
+              <div class="project-description mb-4" id="project-description">
+                <!-- La descripción se cargará aquí dinámicamente -->
               </div>
 
-              <!-- Información Financiera - Destacado -->
-              <div class="financial-highlight">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="project-detail-label">Inversión Total</div>
-                    <div class="project-detail-value" id="project-buy-price">
-                      -
-                    </div>
-                  </div>
-                  <div class="col-md-6 mt-4 mt-md-0">
-                    <div class="project-detail-label">Retorno Final</div>
-                    <div class="project-detail-value" id="project-sell-price">
-                      -
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Métricas Financieras -->
-              <div class="metrics-block">
-                <h4 class="metrics-title">Métricas Financieras</h4>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="project-detail-item">
-                      <div class="project-detail-label">
-                        <i class="fa fa-line-chart"></i>Margen
+              <!-- Información principal -->
+              <div class="project-info-card">
+                <div class="card-section">
+                  <h3 class="section-title">Información General</h3>
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-map-marker"></i>Ubicación
                       </div>
-                      <div class="project-detail-value" id="project-margin">
+                      <div class="info-value" id="project-location">-</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-building"></i>Tipo
+                      </div>
+                      <div class="info-value" id="project-type">-</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-expand"></i>Área
+                      </div>
+                      <div class="info-value" id="project-area">-</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-calendar"></i>Fecha de Adquisición
+                      </div>
+                      <div class="info-value" id="project-buy-date">-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Información Financiera -->
+              <div class="project-info-card">
+                <div class="card-section">
+                  <h3 class="section-title">Información Financiera</h3>
+
+                  <!-- Valores principales -->
+                  <div class="financial-grid">
+                    <div class="financial-item">
+                      <div class="financial-label">Valor de Adquisición<</div>
+                      <div class="financial-value" id="project-buy-price">
                         -
                       </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="project-detail-item">
-                      <div class="project-detail-label">
-                        <i class="fa fa-percent"></i>TIR
+                    <div class="financial-item">
+                      <div class="financial-label">Gastos</div>
+                      <div class="financial-value" id="project-expenses">-</div>
+                    </div>
+                    <div class="financial-item">
+                      <div class="financial-label">Valor de Venta</div>
+                      <div class="financial-value" id="project-sell-price">
+                        -
                       </div>
-                      <div class="project-detail-value" id="project-irr">-</div>
+                      <div class="financial-date" id="project-sell-date">-</div>
+                    </div>
+                  </div>
+
+                  <!-- Métricas -->
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <div class="metric-icon">
+                        <i class="fa fa-line-chart"></i>
+                      </div>
+                      <div class="metric-value" id="project-margin">-</div>
+                      <div class="metric-label">Margen</div>
+                    </div>
+                    <div class="metric-item">
+                      <div class="metric-icon">
+                        <i class="fa fa-percent"></i>
+                      </div>
+                      <div class="metric-value" id="project-irr">-</div>
+                      <div class="metric-label">TIR</div>
                     </div>
                   </div>
                 </div>

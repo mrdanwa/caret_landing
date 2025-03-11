@@ -833,6 +833,7 @@ h1.display-4 {
 }
 
 /* Detalles del proyecto */
+/* Estilos para la sección de proyecto */
 .project-section {
   padding: 4rem 0;
 }
@@ -842,6 +843,7 @@ h1.display-4 {
   margin: 0 auto;
 }
 
+/* Estilos del carrusel (se mantienen como estaban) */
 .project-carousel {
   border-radius: 12px;
   overflow: hidden;
@@ -884,7 +886,6 @@ h1.display-4 {
   transform: scale(1.05);
 }
 
-/* Indicadores del carousel */
 .carousel-indicators {
   bottom: 20px;
 }
@@ -903,11 +904,11 @@ h1.display-4 {
   transform: scale(1.2);
 }
 
-/* Detalles del proyecto */
+/* Nuevos estilos para los detalles del proyecto */
 .project-details {
   background-color: white;
   border-radius: 12px;
-  padding: 3rem;
+  padding: 2.5rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -916,27 +917,27 @@ h1.display-4 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 1rem;
 }
 
 .project-title {
   color: #004225;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin: 0;
 }
 
 .status-badge {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 0.4rem 1rem;
   border-radius: 30px;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .status-current {
@@ -949,136 +950,217 @@ h1.display-4 {
   color: white;
 }
 
-.project-details-grid {
+.project-description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Cards de información */
+.project-info-card {
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fafafa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-section {
+  padding: 1.5rem;
+}
+
+.section-title {
+  color: #004225;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 66, 37, 0.2);
+}
+
+/* Grid de información general */
+.info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.2rem;
 }
 
-.project-detail-item {
-  margin-bottom: 1rem;
-}
-
-.project-detail-label {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  color: #555555;
+.info-item {
   margin-bottom: 0.5rem;
+}
+
+.info-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
   display: flex;
   align-items: center;
 }
 
-.project-detail-label i {
+.info-label i {
   color: #004225;
-  margin-right: 0.8rem;
-  font-size: 1.2rem;
-  width: 20px;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  width: 18px;
   text-align: center;
 }
 
-.project-detail-value {
+.info-value {
   font-family: "Open Sans", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #1f1f1f;
   font-weight: 600;
 }
 
-/* Destacado financiero */
-.financial-highlight {
-  background-color: #f8f9fa;
-  border-left: 5px solid #004225;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+/* Grid financiera */
+.financial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.financial-highlight .row {
-  margin: 0 -15px;
-}
-
-.financial-highlight .project-detail-label {
-  color: #004225;
-}
-
-.financial-highlight .project-detail-value {
-  font-size: 1.4rem;
-  color: #004225;
-}
-
-/* Bloque de métricas */
-.metrics-block {
-  background-color: #f8f9fa;
+.financial-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #fff;
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-top: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
-.metrics-title {
-  font-weight: 600;
+.financial-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.financial-value {
+  font-size: 1.1rem;
   color: #004225;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  font-weight: 700;
+}
+
+.financial-date {
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* Grid de métricas */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.metric-item {
+  background-color: #fff;
+  padding: 1.2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-icon {
+  color: #004225;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #004225;
+  margin-bottom: 0.3rem;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #666;
 }
 
 /* Botón de contacto */
 .contact-btn-container {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .contact-btn {
   background-color: #004225;
   color: white;
-  padding: 0.8rem 1.2rem;
-  font-weight: 400;
+  padding: 0.7rem 1.5rem;
+  font-weight: 500;
   border-radius: 30px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 66, 37, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 66, 37, 0.3);
 }
 
 .contact-btn:hover {
   background-color: #00592f;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 66, 37, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 66, 37, 0.4);
+  color: white;
+  text-decoration: none;
 }
 
 /* Loader */
 #loading-indicator {
-  padding: 6rem 0;
+  padding: 5rem 0;
   text-align: center;
 }
 
 #loading-indicator .spinner-border {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   color: #004225;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .project-container {
-    padding: 0 15px;
+    max-width: 100%;
+    padding: 0;
   }
+}
 
-  .project-details {
-    padding: 1.5rem;
+@media (max-width: 768px) {
+  .project-section {
+    padding: 3rem 0;
   }
 
   .project-carousel .carousel-item img {
     height: 350px;
   }
 
-  .project-details-grid {
+  .project-details {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .info-grid,
+  .financial-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
-  .project-title {
-    font-size: 1.8rem;
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .project-header {
@@ -1087,6 +1169,28 @@ h1.display-4 {
   }
 
   .status-badge {
-    margin-top: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-carousel .carousel-item img {
+    height: 250px;
+  }
+
+  .project-section {
+    padding: 2rem 0;
   }
 }
