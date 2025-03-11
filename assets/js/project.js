@@ -40,8 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("project-area").textContent = `${parseFloat(
         project.area
       ).toLocaleString("es-ES", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 0,
       })} m²`;
 
       // Establecer la descripción del proyecto
@@ -58,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Formatear valores numéricos
       const buyPrice = parseFloat(project.buy_price).toLocaleString("es-ES", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 0,
       });
       document.getElementById(
         "project-buy-price"
@@ -68,8 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Formatear gastos si existen
       if (project.expenses) {
         const expenses = parseFloat(project.expenses).toLocaleString("es-ES", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
+          maximumFractionDigits: 0,
         });
         document.getElementById(
           "project-expenses"
@@ -80,8 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Formatear precio de venta
       const sellPrice = parseFloat(project.sell_price).toLocaleString("es-ES", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 0,
       });
       document.getElementById(
         "project-sell-price"
@@ -102,8 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("project-margin").textContent = `${parseFloat(
         project.margin
       ).toLocaleString("es-ES", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 0,
       })} €`;
 
       document.getElementById("project-irr").textContent = `${parseFloat(
