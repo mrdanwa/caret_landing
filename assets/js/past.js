@@ -116,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
     const buyDate = `${project.buy_month}/${project.buy_year}`;
-    const sellDate = `${project.sell_month}/${project.sell_year}`;
+    const sellDate = project.sell_month
+      ? `${project.sell_month}/${project.sell_year}`
+      : `${project.sell_year}`;
 
     return `
         <div class="col-md-6 col-lg-4 py-0 mt-4 mt-md-0">
