@@ -1,17 +1,12 @@
-// Script para cargar dinámicamente los proyectos con paginación
+// Script para cargar dinámicamente los proyectos
 
 document.addEventListener("DOMContentLoaded", function () {
   // Array para almacenar todos los proyectos
   let allProjects = [];
 
-  // Configuración de la paginación
-  const projectsPerPage = 18;
-  let currentPage = 1;
-  let totalPages = 0;
-
-  // Función para obtener todos los proyectos (recursiva para manejar paginación de la API)
+  // Función para obtener todos los proyectos (recursiva para manejar paginación)
   async function fetchAllProjects(
-    url = "https://caret-u6dxo.ondigitalocean.app/api/projects/"
+    url = "https://caret-u6dxo.ondigitalocean.app/api/projects/?status=current"
   ) {
     try {
       const response = await fetch(url);
@@ -29,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         await fetchAllProjects(data.next);
       } else {
         // Una vez que se han cargado todos los proyectos, filtrar y mostrar los actuales
-        prepareProjects();
+        displayCurrentProjects();
       }
     } catch (error) {
       console.error("Error:", error);
@@ -41,12 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Función para preparar los proyectos filtrados y configurar la paginación
-  function prepareProjects() {
-    // Filtrar solo los proyectos en curso
-    const currentProjects = allProjects.filter(
-      (project) => project.status === "current"
-    );
+  // Función para mostrar los proyectos en curso
+  function displayCurrentProjects() {
+    const currentProjects = allProjects;
 
     // Si no hay proyectos en curso, mostrar mensaje
     if (currentProjects.length === 0) {
@@ -58,41 +50,19 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Calcular el número total de páginas
-    totalPages = Math.ceil(currentProjects.length / projectsPerPage);
-
-    // Mostrar los proyectos de la página actual
-    displayProjectsPage(currentProjects, currentPage);
-
-    // Crear la paginación
-    createPagination(totalPages, currentPage, currentProjects);
-  }
-
-  // Función para mostrar los proyectos de la página actual
-  function displayProjectsPage(projects, page) {
-    // Calcular los índices de inicio y fin para la página actual
-    const startIndex = (page - 1) * projectsPerPage;
-    const endIndex = Math.min(startIndex + projectsPerPage, projects.length);
-
-    // Proyectos que se mostrarán en la página actual
-    const projectsToShow = projects.slice(startIndex, endIndex);
-
     // Ocultar el indicador de carga
     document.getElementById("loading-indicator").style.display = "none";
 
     // Contenedor de proyectos
     const projectsContainer = document.getElementById("projects-container");
 
-    // Limpiar el contenedor antes de añadir nuevos proyectos
-    projectsContainer.innerHTML = "";
-
-    // Crear fila para los proyectos
+    // En lugar de crear filas manualmente, dejar que Bootstrap maneje el flujo de columnas
     const row = document.createElement("div");
     row.className = "row";
     projectsContainer.appendChild(row);
 
-    // Añadir los proyectos a la fila
-    projectsToShow.forEach((project) => {
+    // Añadir todos los proyectos a una única fila
+    currentProjects.forEach((project) => {
       // Crear elemento de columna para cada proyecto
       const col = document.createElement("div");
       col.className = "col-md-6 col-lg-4 py-0 mt-4";
@@ -108,113 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typeof window.reInitializeComponents === "function") {
       window.reInitializeComponents();
     }
-  }
-
-  // Función para crear la paginación
-  function createPagination(totalPages, currentPage, projects) {
-    // Contenedor para la paginación
-    const paginationContainer = document.createElement("div");
-    paginationContainer.className = "d-flex justify-content-center mt-5";
-
-    // Crear el elemento de navegación de la paginación
-    const nav = document.createElement("nav");
-    nav.setAttribute("aria-label", "Paginación de proyectos");
-
-    // Crear la lista de paginación
-    const ul = document.createElement("ul");
-    ul.className = "pagination";
-    nav.appendChild(ul);
-
-    // Botón "Anterior"
-    const prevButton = document.createElement("li");
-    prevButton.className = `page-item ${currentPage === 1 ? "disabled" : ""}`;
-    prevButton.innerHTML = `<a class="page-link" href="#" aria-label="Anterior">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>`;
-
-    // Añadir evento al botón "Anterior"
-    if (currentPage > 1) {
-      prevButton.addEventListener("click", () => {
-        if (currentPage > 1) {
-          currentPage--;
-          displayProjectsPage(projects, currentPage);
-          createPagination(totalPages, currentPage, projects);
-        }
-      });
-    }
-
-    ul.appendChild(prevButton);
-
-    // Mostrar un máximo de 5 páginas en la paginación
-    const maxPagesToShow = 5;
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
-    // Ajustar el inicio si estamos cerca del final
-    if (endPage - startPage < maxPagesToShow - 1) {
-      startPage = Math.max(1, endPage - maxPagesToShow + 1);
-    }
-
-    // Añadir números de página
-    for (let i = startPage; i <= endPage; i++) {
-      const pageItem = document.createElement("li");
-      pageItem.className = `page-item ${i === currentPage ? "active" : ""}`;
-      pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-
-      // Añadir evento a cada número de página
-      if (i !== currentPage) {
-        pageItem.addEventListener("click", () => {
-          currentPage = i;
-          displayProjectsPage(projects, currentPage);
-          createPagination(totalPages, currentPage, projects);
-        });
-      }
-
-      ul.appendChild(pageItem);
-    }
-
-    // Botón "Siguiente"
-    const nextButton = document.createElement("li");
-    nextButton.className = `page-item ${
-      currentPage === totalPages ? "disabled" : ""
-    }`;
-    nextButton.innerHTML = `<a class="page-link" href="#" aria-label="Siguiente">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>`;
-
-    // Añadir evento al botón "Siguiente"
-    if (currentPage < totalPages) {
-      nextButton.addEventListener("click", () => {
-        if (currentPage < totalPages) {
-          currentPage++;
-          displayProjectsPage(projects, currentPage);
-          createPagination(totalPages, currentPage, projects);
-        }
-      });
-    }
-
-    ul.appendChild(nextButton);
-
-    // Añadir la navegación al contenedor de paginación
-    paginationContainer.appendChild(nav);
-
-    // Añadir el contenedor de paginación al final del contenedor principal
-    const projectsContainer = document.getElementById("projects-container");
-
-    // Verificar si ya existe un paginador y eliminarlo
-    const existingPagination = document.querySelector(".pagination-container");
-    if (existingPagination) {
-      existingPagination.remove();
-    }
-
-    // Añadir clase para facilitar la identificación
-    paginationContainer.classList.add("pagination-container");
-
-    // Añadir el paginador después del contenedor de proyectos
-    projectsContainer.parentNode.insertBefore(
-      paginationContainer,
-      projectsContainer.nextSibling
-    );
   }
 
   // Función para crear HTML de un proyecto
@@ -294,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
   }
-
   // Iniciar la carga de proyectos
   fetchAllProjects();
 });
