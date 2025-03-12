@@ -1,12 +1,18 @@
-// Script para cargar dinámicamente los proyectos
+// Script unificado para cargar dinámicamente los proyectos (pasados y actuales)
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Determinar qué tipo de proyectos cargar basado en la página actual
+  const currentPage = window.location.pathname.split("/").pop();
+  const isCurrentProjects = currentPage.includes("current");
+  const projectStatus = isCurrentProjects ? "current" : "past";
+  const detailPagePrefix = isCurrentProjects ? "currentproject" : "pastproject";
+
   // Array para almacenar todos los proyectos
   let allProjects = [];
 
   // Función para obtener todos los proyectos (recursiva para manejar paginación)
   async function fetchAllProjects(
-    url = "https://caret-u6dxo.ondigitalocean.app/api/projects/?status=past"
+    url = `https://caret-u6dxo.ondigitalocean.app/api/projects/?status=${projectStatus}`
   ) {
     try {
       const response = await fetch(url);
@@ -23,31 +29,30 @@ document.addEventListener("DOMContentLoaded", function () {
       if (data.next) {
         await fetchAllProjects(data.next);
       } else {
-        // Una vez que se han cargado todos los proyectos, filtrar y mostrar los pasados
-        displayPastProjects();
+        // Una vez que se han cargado todos los proyectos, mostrarlos
+        displayProjects();
       }
     } catch (error) {
       console.error("Error:", error);
       document.getElementById("loading-indicator").innerHTML = `
-          <div class="alert alert-danger" role="alert">
-            Error al cargar los proyectos. Por favor, intente nuevamente más tarde.
-          </div>
-        `;
+            <div class="alert alert-danger" role="alert">
+              Error al cargar los proyectos. Por favor, intente nuevamente más tarde.
+            </div>
+          `;
     }
   }
 
-  // Función para mostrar los proyectos pasados
-  function displayPastProjects() {
-    // Filtrar solo los proyectos pasados
-    const pastProjects = allProjects;
-
-    // Si no hay proyectos pasados, mostrar mensaje
-    if (pastProjects.length === 0) {
+  // Función para mostrar los proyectos
+  function displayProjects() {
+    // Si no hay proyectos, mostrar mensaje
+    if (allProjects.length === 0) {
       document.getElementById("loading-indicator").innerHTML = `
-          <div class="alert alert-info" role="alert">
-            No se encontraron proyectos pasados.
-          </div>
-        `;
+            <div class="alert alert-info" role="alert">
+              No se encontraron proyectos ${
+                isCurrentProjects ? "en curso" : "pasados"
+              }.
+            </div>
+          `;
       return;
     }
 
@@ -63,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     projectsContainer.appendChild(row);
 
     // Añadir todos los proyectos a una única fila
-    pastProjects.forEach((project) => {
+    allProjects.forEach((project) => {
       // Crear elemento de columna para cada proyecto
       const col = document.createElement("div");
       col.className = "col-md-6 col-lg-4 py-0 mt-4";
@@ -103,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
       maximumFractionDigits: 0,
     });
     const formattedIRR = parseFloat(project.irr).toLocaleString("es-ES", {
-      minimumFractionDigits: 0,
+      minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
     const formattedExpenses = parseFloat(project.expenses).toLocaleString(
@@ -118,45 +123,45 @@ document.addEventListener("DOMContentLoaded", function () {
       : `${project.sell_year}`;
 
     return `
-      <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">
-        <img
-          class="w-100 radius-tr-secondary radius-tl-secondary"
-          src="${
-            project.image ? project.image : "../assets/images/images/caret.png"
-          }"
-          alt="${project.name}"
-          onerror="this.src='../assets/images/images/caret.png';"
-          style="height: 225px; object-fit: cover;"
-        />
-        <div class="px-4 pt-4" style="flex-grow: 1; display: flex; flex-direction: column;">
-          <div class="overflow-hidden">
-            <a href="pastproject.html?id=${project.id}">
-              <h5>${project.name}</h5>
-            </a>
-          </div>
-          <div class="overflow-hidden">
-            <p class="color-7">${project.location}</p>
-          </div>
-          <div class="overflow-hidden">
-            <p class="mt-3">
-              Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. El precio de compra es de ${formattedBuyPrice} €, con gastos asociados de ${formattedExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.
-            </p>
-          </div>
-          <div class="overflow-hidden" style="margin-top: auto;">
-            <div class="d-inline-block">
-              <a class="d-flex align-items-center" href="pastproject.html?id=${
-                project.id
-              }"
-                >Más Información
-                <div class="overflow-hidden ml-2">
-                  <span class="d-inline-block">&xrarr;</span>
-                </div></a
-              >
+        <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">
+          <img
+            class="w-100 radius-tr-secondary radius-tl-secondary"
+            src="${
+              project.image
+                ? project.image
+                : "../assets/images/images/caret.png"
+            }"
+            alt="${project.name}"
+            onerror="this.src='../assets/images/images/caret.png';"
+            style="height: 225px; object-fit: cover;"
+          />
+          <div class="px-4 pt-4" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <div class="overflow-hidden">
+              <a href="${detailPagePrefix}.html?id=${project.id}">
+                <h5>${project.name}</h5>
+              </a>
+            </div>
+            <div class="overflow-hidden">
+              <p class="color-7">${project.location}</p>
+            </div>
+            <div class="overflow-hidden">
+              <p class="mt-3">
+                Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. El precio de compra es de ${formattedBuyPrice} €, con gastos asociados de ${formattedExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.
+              </p>
+            </div>
+            <div class="overflow-hidden" style="margin-top: auto;">
+              <div class="d-inline-block">
+                <a class="d-flex align-items-center" href="${detailPagePrefix}.html?id=${project.id}"
+                  >Más Información
+                  <div class="overflow-hidden ml-2">
+                    <span class="d-inline-block">&xrarr;</span>
+                  </div></a
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
   }
 
   // Iniciar la carga de proyectos
