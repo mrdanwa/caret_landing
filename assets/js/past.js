@@ -59,24 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Contenedor de proyectos
     const projectsContainer = document.getElementById("projects-container");
 
-    // Generar filas de proyectos (3 proyectos por fila)
-    for (let i = 0; i < pastProjects.length; i += 3) {
-      const row = document.createElement("div");
-      row.className = "row mt-4";
+    // En lugar de crear filas manualmente, dejar que Bootstrap maneje el flujo de columnas
+    const row = document.createElement("div");
+    row.className = "row mt-4";
+    projectsContainer.appendChild(row);
 
-      // Agregar hasta 3 proyectos en esta fila
-      for (let j = 0; j < 3; j++) {
-        if (i + j < pastProjects.length) {
-          const project = pastProjects[i + j];
+    // Añadir todos los proyectos a una única fila
+    pastProjects.forEach((project) => {
+      // Crear elemento de columna para cada proyecto
+      const col = document.createElement("div");
+      col.className = "col-md-6 col-lg-4 py-0 mt-4";
 
-          // Crear HTML para el proyecto
-          const projectHTML = createProjectHTML(project);
-          row.innerHTML += projectHTML;
-        }
-      }
+      // Añadir el HTML del proyecto a la columna
+      col.innerHTML = createProjectHTML(project);
 
-      projectsContainer.appendChild(row);
-    }
+      // Añadir la columna a la fila
+      row.appendChild(col);
+    });
 
     // Reinicializar animaciones y otros componentes del tema
     if (typeof window.reInitializeComponents === "function") {
@@ -121,49 +120,45 @@ document.addEventListener("DOMContentLoaded", function () {
       : `${project.sell_year}`;
 
     return `
-        <div class="col-md-6 col-lg-4 py-0 mt-4 mt-md-0">
-          <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">
-            <img
-              class="w-100 radius-tr-secondary radius-tl-secondary"
-              src="${
-                project.image
-                  ? project.image
-                  : "../assets/images/images/caret.png"
+      <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">
+        <img
+          class="w-100 radius-tr-secondary radius-tl-secondary"
+          src="${
+            project.image ? project.image : "../assets/images/images/caret.png"
+          }"
+          alt="${project.name}"
+          onerror="this.src='../assets/images/images/caret.png';"
+          style="height: 225px; object-fit: cover;"
+        />
+        <div class="px-4 pt-4" style="flex-grow: 1; display: flex; flex-direction: column;">
+          <div class="overflow-hidden">
+            <a href="pastproject.html?id=${project.id}">
+              <h5>${project.name}</h5>
+            </a>
+          </div>
+          <div class="overflow-hidden">
+            <p class="color-7">${project.location}</p>
+          </div>
+          <div class="overflow-hidden">
+            <p class="mt-3">
+              Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. El precio de compra es de ${formattedBuyPrice} €, con gastos asociados de ${formattedExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.
+            </p>
+          </div>
+          <div class="overflow-hidden" style="margin-top: auto;">
+            <div class="d-inline-block">
+              <a class="d-flex align-items-center" href="pastproject.html?id=${
+                project.id
               }"
-              alt="${project.name}"
-              onerror="this.src='../assets/images/images/caret.png';"
-              style="height: 225px; object-fit: cover;"
-            />
-            <div class="px-4 pt-4" style="flex-grow: 1; display: flex; flex-direction: column;">
-              <div class="overflow-hidden">
-                <a href="pastproject.html?id=${project.id}">
-                  <h5>${project.name}</h5>
-                </a>
-              </div>
-              <div class="overflow-hidden">
-                <p class="color-7">${project.location}</p>
-              </div>
-              <div class="overflow-hidden">
-                <p class="mt-3">
-                  Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. El precio de compra es de ${formattedBuyPrice} €, con gastos asociados de ${formattedExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.
-                </p>
-              </div>
-              <div class="overflow-hidden" style="margin-top: auto;">
-                <div class="d-inline-block">
-                  <a class="d-flex align-items-center" href="pastproject.html?id=${
-                    project.id
-                  }"
-                    >Más Información
-                    <div class="overflow-hidden ml-2">
-                      <span class="d-inline-block">&xrarr;</span>
-                    </div></a
-                  >
-                </div>
-              </div>
+                >Más Información
+                <div class="overflow-hidden ml-2">
+                  <span class="d-inline-block">&xrarr;</span>
+                </div></a
+              >
             </div>
           </div>
         </div>
-      `;
+      </div>
+    `;
   }
 
   // Iniciar la carga de proyectos
