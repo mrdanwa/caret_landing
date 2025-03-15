@@ -111,7 +111,13 @@ document.addEventListener("DOMContentLoaded", function () {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-    const formattedExpenses = parseFloat(project.expenses).toLocaleString(
+    const formattedBuyExpenses = parseFloat(project.buy_expenses).toLocaleString(
+      "es-ES",
+      {
+        maximumFractionDigits: 0,
+      }
+    );
+    const formattedSellExpenses = parseFloat(project.sell_expenses).toLocaleString(
       "es-ES",
       {
         maximumFractionDigits: 0,
@@ -121,6 +127,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const sellDate = project.sell_month
       ? `${project.sell_month}/${project.sell_year}`
       : `${project.sell_year}`;
+
+    // Texto condicional basado en si es un proyecto actual o pasado
+    const returnText = isCurrentProjects 
+    ? `Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. Se adquirió por ${formattedBuyPrice} €, con unos gastos asociados de ${formattedBuyExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.`
+    : `Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. Se adquirió por ${formattedBuyPrice} €, con unos gastos asociados de ${formattedBuyExpenses} €. Posteriormente, se vendió por ${formattedSellPrice} €, con unos gastos de ${formattedSellExpenses} €, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.`;
 
     return `
         <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">
@@ -146,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div class="overflow-hidden">
               <p class="mt-3">
-                Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. El precio de compra es de ${formattedBuyPrice} €, con gastos asociados de ${formattedExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.
+                ${returnText}
               </p>
             </div>
             <div class="overflow-hidden" style="margin-top: auto;">

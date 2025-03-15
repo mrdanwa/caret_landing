@@ -64,15 +64,27 @@ document.addEventListener("DOMContentLoaded", function () {
       ).textContent = `${buyPrice} €`;
 
       // Formatear gastos si existen
-      if (project.expenses) {
-        const expenses = parseFloat(project.expenses).toLocaleString("es-ES", {
+      if (project.buy_expenses) {
+        const expenses = parseFloat(project.buy_expenses).toLocaleString("es-ES", {
           maximumFractionDigits: 0,
         });
         document.getElementById(
-          "project-expenses"
+          "project-buy-expenses"
         ).textContent = `${expenses} €`;
       } else {
-        document.getElementById("project-expenses").textContent = "N/A";
+        document.getElementById("project-buy-expenses").textContent = "N/A";
+      }
+
+      // Formatear gastos de venta si existen
+      if (project.sell_expenses) {
+        const expenses = parseFloat(project.sell_expenses).toLocaleString("es-ES", {
+          maximumFractionDigits: 0,
+        });
+        document.getElementById(
+          "project-sell-expenses"
+        ).textContent = `${expenses} €`;
+      } else {
+        document.getElementById("project-sell-expenses").textContent = "N/A";
       }
 
       // Formatear precio de venta
