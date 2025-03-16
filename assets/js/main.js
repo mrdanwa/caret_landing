@@ -293,3 +293,37 @@ $(document).ready(function () {
     originalScrollHandler();
   }
 });
+
+// Simple newsletter form integration
+document.addEventListener("DOMContentLoaded", function () {
+  const newsletterForm = document.querySelector(".newsletter-form");
+
+  newsletterForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const inputGroup = this.querySelector(".input-group");
+    const emailInput = this.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+
+    // Save original content to restore later
+    const originalContent = inputGroup.innerHTML;
+
+    // Send the request to the API
+    fetch("https://caret-u6dxo.ondigitalocean.app/api/newsletter/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email: email }),
+    }).then(() => {
+      inputGroup.innerHTML =
+        '<div style="width: 100%; padding: 0.9rem 1.2rem; background-color: #004225; color: white; font-size: 16px; font-weight: bold; text-align: center; border-radius: 6px;">¡Gracias por suscribirte!</div>';
+
+      setTimeout(() => {
+        inputGroup.innerHTML = originalContent;
+        inputGroup.querySelector('input[type="email"]').value = "";
+      }, 3000);
+    });
+  });
+});

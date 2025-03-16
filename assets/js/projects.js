@@ -111,27 +111,25 @@ document.addEventListener("DOMContentLoaded", function () {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-    const formattedBuyExpenses = parseFloat(project.buy_expenses).toLocaleString(
-      "es-ES",
-      {
-        maximumFractionDigits: 0,
-      }
-    );
-    const formattedSellExpenses = parseFloat(project.sell_expenses).toLocaleString(
-      "es-ES",
-      {
-        maximumFractionDigits: 0,
-      }
-    );
+    const formattedBuyExpenses = parseFloat(
+      project.buy_expenses
+    ).toLocaleString("es-ES", {
+      maximumFractionDigits: 0,
+    });
+    const formattedSellExpenses = parseFloat(
+      project.sell_expenses
+    ).toLocaleString("es-ES", {
+      maximumFractionDigits: 0,
+    });
     const buyDate = `${project.buy_month}/${project.buy_year}`;
     const sellDate = project.sell_month
       ? `${project.sell_month}/${project.sell_year}`
       : `${project.sell_year}`;
 
     // Texto condicional basado en si es un proyecto actual o pasado
-    const returnText = isCurrentProjects 
-    ? `Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. Se adquirió por ${formattedBuyPrice} €, con unos gastos asociados de ${formattedBuyExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.`
-    : `Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. Se adquirió por ${formattedBuyPrice} €, con unos gastos asociados de ${formattedBuyExpenses} €. Posteriormente, se vendió por ${formattedSellPrice} €, con unos gastos de ${formattedSellExpenses} €, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.`;
+    const returnText = isCurrentProjects
+      ? `Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. Se adquirió por ${formattedBuyPrice} €, con unos gastos asociados de ${formattedBuyExpenses} €. Se espera un retorno de ${formattedSellPrice} € en ${sellDate}, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.`
+      : `Proyecto de ${project.type.toLowerCase()} de ${formattedArea} m² realizado en ${buyDate}. Se adquirió por ${formattedBuyPrice} €, con unos gastos asociados de ${formattedBuyExpenses} €. Posteriormente, se vendió por ${formattedSellPrice} €, con unos gastos de ${formattedSellExpenses} €, generando un margen de ${formattedMargin} € y una TIR del ${formattedIRR}%.`;
 
     return `
         <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">

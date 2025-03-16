@@ -65,9 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Formatear gastos si existen
       if (project.buy_expenses) {
-        const expenses = parseFloat(project.buy_expenses).toLocaleString("es-ES", {
-          maximumFractionDigits: 0,
-        });
+        const expenses = parseFloat(project.buy_expenses).toLocaleString(
+          "es-ES",
+          {
+            maximumFractionDigits: 0,
+          }
+        );
         document.getElementById(
           "project-buy-expenses"
         ).textContent = `${expenses} €`;
@@ -77,9 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Formatear gastos de venta si existen
       if (project.sell_expenses) {
-        const expenses = parseFloat(project.sell_expenses).toLocaleString("es-ES", {
-          maximumFractionDigits: 0,
-        });
+        const expenses = parseFloat(project.sell_expenses).toLocaleString(
+          "es-ES",
+          {
+            maximumFractionDigits: 0,
+          }
+        );
         document.getElementById(
           "project-sell-expenses"
         ).textContent = `${expenses} €`;
