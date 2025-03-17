@@ -63,35 +63,29 @@ document.addEventListener("DOMContentLoaded", function () {
         "project-buy-price"
       ).textContent = `${buyPrice} €`;
 
-      // Formatear gastos si existen
+      // Calcular y mostrar gastos totales
+      let expenses = 0;
+
+      // Gastos de compra si existen
       if (project.buy_expenses) {
-        const expenses = parseFloat(project.buy_expenses).toLocaleString(
-          "es-ES",
-          {
-            maximumFractionDigits: 0,
-          }
-        );
-        document.getElementById(
-          "project-buy-expenses"
-        ).textContent = `${expenses} €`;
-      } else {
-        document.getElementById("project-buy-expenses").textContent = "N/A";
+        expenses += parseFloat(project.buy_expenses);
       }
 
-      // Formatear gastos de venta si existen
+      // Gastos de venta si existen
       if (project.sell_expenses) {
-        const expenses = parseFloat(project.sell_expenses).toLocaleString(
-          "es-ES",
-          {
-            maximumFractionDigits: 0,
-          }
-        );
-        document.getElementById(
-          "project-sell-expenses"
-        ).textContent = `${expenses} €`;
-      } else {
-        document.getElementById("project-sell-expenses").textContent = "N/A";
+        expenses += parseFloat(project.sell_expenses);
       }
+
+      // Otros gastos si existen
+      if (project.other_expenses) {
+        expenses += parseFloat(project.other_expenses);
+      }
+
+      expenses = expenses.toLocaleString("es-ES", {
+        maximumFractionDigits: 0,
+      });
+
+      document.getElementById("project-expenses").textContent = `${expenses} €`;
 
       // Formatear precio de venta
       const sellPrice = parseFloat(project.sell_price).toLocaleString("es-ES", {

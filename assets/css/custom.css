@@ -1024,7 +1024,7 @@ h1.display-4 {
 /* Grid financiera */
 .financial-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
