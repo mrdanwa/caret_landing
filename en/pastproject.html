@@ -109,9 +109,7 @@
       >
         <div class="container">
           <nav class="navbar navbar-expand-lg">
-            <a
-              class="navbar-brand overflow-hidden pr-3 pb-2"
-              href="../index.html"
+            <a class="navbar-brand overflow-hidden pr-3 pb-2" href="../en.html"
               ><img
                 src="../assets/images/logo/logo4.png"
                 alt=""
@@ -171,6 +169,8 @@
           </nav>
         </div>
       </div>
+
+      <!-- Hero Section -->
       <section>
         <div>
           <div
@@ -192,8 +192,9 @@
                   <h1
                     class="color-white fs-4 fs-md-5 mb-0 zopacity"
                     data-zanim='{"delay":0}'
+                    id="project-title"
                   >
-                    Proyectos Pasados
+                    Cargando proyecto...
                   </h1>
                   <div
                     class="nav zopacity"
@@ -203,10 +204,19 @@
                   >
                     <ol class="breadcrumb fs-1 pl-0 fw-700">
                       <li class="breadcrumb-item">
-                        <a class="color-white" href="../index.html">Inicio</a>
+                        <a class="color-white" href="../en.html">Inicio</a>
                       </li>
-                      <li class="breadcrumb-item active" aria-current="page">
-                        Proyectos Pasados
+                      <li class="breadcrumb-item">
+                        <a class="color-white" href="current.html"
+                          >Proyectos en Curso</a
+                        >
+                      </li>
+                      <li
+                        class="breadcrumb-item active"
+                        aria-current="page"
+                        id="breadcrumb-project-name"
+                      >
+                        Cargando...
                       </li>
                     </ol>
                   </div>
@@ -219,22 +229,169 @@
         <!--/.container-->
       </section>
 
-      <section class="background-11">
-        <div class="container">
-          <!-- INICIO DE CONTENEDOR DE PROYECTOS -->
-          <div id="loading-indicator" class="text-center py-5">
+      <!-- Project Details Section -->
+      <section class="project-section background-11">
+        <div class="container" style="padding: 0">
+          <!-- Indicador de carga -->
+          <div id="loading-indicator" class="text-center">
             <div class="spinner-border text-primary" role="status">
-              <span class="sr-only">Cargando proyectos...</span>
+              <span class="sr-only">Cargando proyecto...</span>
             </div>
-            <p class="mt-2">Cargando proyectos...</p>
+            <p class="mt-3">Cargando detalles del proyecto...</p>
           </div>
 
-          <div id="projects-container">
-            <!-- Los proyectos se cargarán aquí dinámicamente -->
+          <!-- Contenido del proyecto -->
+          <div
+            id="project-content"
+            class="project-container"
+            style="display: none"
+          >
+            <!-- Carousel -->
+            <div
+              id="project-carousel"
+              class="carousel slide project-carousel"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner" id="carousel-items">
+                <!-- Las imágenes se cargarán aquí -->
+              </div>
+
+              <!-- Indicadores del carousel -->
+              <ol class="carousel-indicators" id="carousel-indicators">
+                <!-- Los indicadores se generarán dinámicamente -->
+              </ol>
+
+              <!-- Controles del carousel -->
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Anterior</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Siguiente</span>
+              </button>
+            </div>
+
+            <!-- Detalles del proyecto -->
+            <div class="project-details">
+              <!-- Cabecera con título y estado -->
+              <div class="project-header">
+                <h2 class="project-title" id="detail-project-name">
+                  Detalles del Proyecto
+                </h2>
+                <span class="status-badge" id="project-status">Estado</span>
+              </div>
+
+              <!-- Descripción del proyecto -->
+              <div class="project-description mb-4" id="project-description">
+                <!-- La descripción se cargará aquí dinámicamente -->
+              </div>
+
+              <!-- Información principal -->
+              <div class="project-info-card">
+                <div class="card-section">
+                  <h3 class="section-title">Información General</h3>
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-map-marker"></i>Ubicación
+                      </div>
+                      <div class="info-value" id="project-location">-</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-building"></i>Tipo
+                      </div>
+                      <div class="info-value" id="project-type">-</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-expand"></i>Área
+                      </div>
+                      <div class="info-value" id="project-area">-</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">
+                        <i class="fa fa-calendar"></i>Fecha de Adquisición y
+                        Venta
+                      </div>
+                      <div class="info-value">
+                        <span id="project-buy-date">-</span> -
+                        <span id="project-sell-date">-</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Información Financiera -->
+              <div class="project-info-card">
+                <div class="card-section">
+                  <h3 class="section-title">Información Financiera</h3>
+
+                  <!-- Valores principales -->
+                  <div class="financial-grid">
+                    <div class="financial-item">
+                      <div class="financial-label">Precio de Compra</div>
+                      <div class="financial-value" id="project-buy-price">
+                        -
+                      </div>
+                    </div>
+                    <div class="financial-item">
+                      <div class="financial-label">Gastos</div>
+                      <div class="financial-value" id="project-expenses">-</div>
+                    </div>
+                    <div class="financial-item">
+                      <div class="financial-label">Precio de Venta</div>
+                      <div class="financial-value" id="project-sell-price">
+                        -
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Métricas -->
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <div class="metric-icon">
+                        <i class="fa fa-line-chart"></i>
+                      </div>
+                      <div class="metric-value" id="project-margin">-</div>
+                      <div class="metric-label">Margen</div>
+                    </div>
+                    <div class="metric-item">
+                      <div class="metric-icon">
+                        <i class="fa fa-percent"></i>
+                      </div>
+                      <div class="metric-value" id="project-irr">-</div>
+                      <div class="metric-label">TIR</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botón de contacto -->
+              <div class="contact-btn-container">
+                <a href="contact.html" class="btn contact-btn">
+                  <i class="fa fa-envelope mr-2"></i>Solicitar Más Información
+                </a>
+              </div>
+            </div>
           </div>
-          <!-- FIN DE CONTENEDOR DE PROYECTOS -->
         </div>
-        <!--/.container-->
       </section>
 
       <!-- Footer -->
@@ -277,7 +434,7 @@
                       <h4 class="footer-links-title">Enlaces Rápidos</h4>
                       <ul class="footer-menu list-unstyled">
                         <li>
-                          <a href="../index.html" class="footer-link">Inicio</a>
+                          <a href="../en.html" class="footer-link">Inicio</a>
                         </li>
                         <li>
                           <a href="about.html" class="footer-link">Nosotros</a>
@@ -371,7 +528,7 @@
           <div class="container">
             <div class="row align-items-center">
               <div class="col-md-4 text-md-left text-center mb-md-0 mb-3">
-                <a href="../index.html" aria-label="Homepage">
+                <a href="../en.html" aria-label="Homepage">
                   <img
                     src="../assets/images/logo/logo2.png"
                     alt="Logo"
@@ -392,13 +549,13 @@
     </main>
     <!-- Idioma -->
     <div class="language-switcher">
-      <button class="language-btn" id="language-toggle">ES</button>
+      <button class="language-btn" id="language-toggle">EN</button>
       <div class="language-options" id="language-options">
         <a href="#" class="language-option active" data-lang="es">
-          <span class="language-flag">🇪🇸</span> Español
-        </a>
-        <a href="../en/past.html" class="language-option" data-lang="en">
           <span class="language-flag">🇬🇧</span> English
+        </a>
+        <a href="../es/pastproject.html" class="language-option" data-lang="en">
+          <span class="language-flag">🇪🇸</span> Español
         </a>
       </div>
     </div>
@@ -422,6 +579,6 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/projects.js"></script>
+    <script src="../assets/js/project.js"></script>
   </body>
 </html>
