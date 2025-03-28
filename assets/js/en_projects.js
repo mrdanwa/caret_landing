@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Texto condicional basado en si es un proyecto actual o pasado
     const returnText = isCurrentProjects
-      ? `Project of ${project.type.toLowerCase()} with ${formattedArea} m² carried out in ${buyDate}. It was acquired for €${formattedBuyPrice}, with associated expenses of €${totalExpenses}. An expected return of €${formattedSellPrice} is projected in ${sellDate}, generating a margin of €${formattedMargin} and an IRR of ${formattedIRR}%.`
-      : `Project of ${project.type.toLowerCase()} with ${formattedArea} m² carried out in ${buyDate}. It was acquired for €${formattedBuyPrice}, with associated expenses of €${totalExpenses}. It was later sold for €${formattedSellPrice}, generating a margin of €${formattedMargin} and an IRR of ${formattedIRR}%.`;
+      ? `Project of ${project.type_en.toLowerCase()} with ${formattedArea} m² carried out in ${buyDate}. It was acquired for €${formattedBuyPrice}, with associated expenses of €${totalExpenses}. An expected return of €${formattedSellPrice} is projected in ${sellDate}, generating a margin of €${formattedMargin} and an IRR of ${formattedIRR}%.`
+      : `Project of ${project.type_en.toLowerCase()} with ${formattedArea} m² carried out in ${buyDate}. It was acquired for €${formattedBuyPrice}, with associated expenses of €${totalExpenses}. It was later sold for €${formattedSellPrice}, generating a margin of €${formattedMargin} and an IRR of ${formattedIRR}%.`;
 
     return `
         <div class="background-white pb-4 h-100 radius-secondary" style="display: flex; flex-direction: column;">

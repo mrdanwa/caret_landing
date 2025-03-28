@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("detail-project-name").textContent = project.name;
       document.getElementById("project-location").textContent =
         project.location;
-      document.getElementById("project-type").textContent = project.type;
+      document.getElementById("project-type").textContent = project.type_en;
       document.getElementById("project-area").textContent = `${parseFloat(
         project.area
       ).toLocaleString("es-ES", {
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })} m²`;
 
       // Establecer la descripción del proyecto
-      if (project.description) {
+      if (project.description_en) {
         document.getElementById("project-description").textContent =
-          project.description;
+          project.description_en;
       } else {
         document.getElementById("project-description").style.display = "none";
       }
