@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Añadir la imagen principal
       const mainImage = project.image
         ? project.image
-        : "../assets/images/images/caret.png";
+        : "../assets/images/images/caret.webp";
       carouselItems += `
     <div class="carousel-item active">
       <img src="${mainImage}" class="d-block w-100" alt="${project.name}">

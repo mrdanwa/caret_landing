@@ -150,10 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
             src="${
               project.image
                 ? project.image
-                : "../assets/images/images/caret.png"
+                : "../assets/images/images/caret.webp"
             }"
             alt="${project.name}"
-            onerror="this.src='../assets/images/images/caret.png';"
+            onerror="this.src='../assets/images/images/caret.webp';"
             style="height: 225px; object-fit: cover;"
           />
           <div class="px-4 pt-4" style="flex-grow: 1; display: flex; flex-direction: column;">

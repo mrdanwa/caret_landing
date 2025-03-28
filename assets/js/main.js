@@ -78,10 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set initial logo state (white when at top)
   if (logoIcon1) {
-    logoIcon1.setAttribute("src", basePath + "assets/images/logo/logo5.png");
+    logoIcon1.setAttribute("src", basePath + "assets/images/logo/logo5.webp");
   }
   if (logoIcon2) {
-    logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo8.png");
+    logoIcon2.setAttribute("src", basePath + "assets/images/logo/logo8.webp");
   }
 
   function checkScroll() {
@@ -104,13 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (logoIcon1) {
         logoIcon1.setAttribute(
           "src",
-          basePath + "assets/images/logo/logo4.png"
+          basePath + "assets/images/logo/logo4.webp"
         );
       }
       if (logoIcon2) {
         logoIcon2.setAttribute(
           "src",
-          basePath + "assets/images/logo/logo7.png"
+          basePath + "assets/images/logo/logo7.webp"
         );
       }
     } else {
@@ -119,13 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (logoIcon1) {
         logoIcon1.setAttribute(
           "src",
-          basePath + "assets/images/logo/logo5.png"
+          basePath + "assets/images/logo/logo5.webp"
         );
       }
       if (logoIcon2) {
         logoIcon2.setAttribute(
           "src",
-          basePath + "assets/images/logo/logo8.png"
+          basePath + "assets/images/logo/logo8.webp"
         );
       }
     }
@@ -170,10 +170,10 @@ $(document).ready(function () {
   const basePath = getBasePath();
 
   // Define logo paths
-  const whiteLogo1 = basePath + "assets/images/logo/logo5.png";
-  const whiteLogo2 = basePath + "assets/images/logo/logo8.png";
-  const coloredLogo1 = basePath + "assets/images/logo/logo4.png";
-  const coloredLogo2 = basePath + "assets/images/logo/logo7.png";
+  const whiteLogo1 = basePath + "assets/images/logo/logo5.webp";
+  const whiteLogo2 = basePath + "assets/images/logo/logo8.webp";
+  const coloredLogo1 = basePath + "assets/images/logo/logo4.webp";
+  const coloredLogo2 = basePath + "assets/images/logo/logo7.webp";
 
   let isNavbarOpen = false;
 
