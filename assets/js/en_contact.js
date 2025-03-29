@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify({ email: email }),
     }).then(() => {
       inputGroup.innerHTML =
-        '<div style="width: 100%; padding: 0.9rem 1.2rem; background-color: #004225; color: white; font-size: 16px; font-weight: bold; text-align: center; border-radius: 6px;">Thank you for subscribing!</div>';
+        '<div style="color: white; font-size: 16px; font-weight: bold; text-align: center;">Thank you for subscribing!</div>';
 
       setTimeout(() => {
         inputGroup.innerHTML = originalContent;
